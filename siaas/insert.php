@@ -1,0 +1,45 @@
+<?php
+include("connect.php");
+$username=$_POST['text1'];
+$password=$_POST['pass1'];
+$category=$_POST['rad1'];
+if($category==Administrator)
+{
+$count=mysql_query("SELECT * FROM Administrator WHERE username='$username' AND password='$password'");
+$count1=mysql_num_rows($count);
+if($count1==1)
+{
+header('location:admin.php');
+}
+else
+{
+header('location:user.php?id=1');
+}
+}
+if($category==Teacher)
+{
+$count=mysql_query("SELECT * FROM Teacher WHERE username='$username' AND password='$password'");
+$count1=mysql_num_rows($count);
+if($count1==1)
+{
+header('location:teacherlogin.php');
+}
+else
+{
+header('location:user.php?id=1');
+}
+}
+if($category==Student)
+{
+$count=mysql_query("SELECT * FROM Student WHERE username='$username' AND password='$password'");
+$count1=mysql_num_rows($count);
+if($count1==1)
+{
+header('location:studlogin.php');
+}
+else
+{
+header('location:user.php?id=1');
+}
+}
+?>
